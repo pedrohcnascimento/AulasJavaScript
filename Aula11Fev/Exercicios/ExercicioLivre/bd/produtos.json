@@ -1,0 +1,20 @@
+[
+  {
+    "produto": "sdadasd",
+    "categoria": "Eletrônicos",
+    "disponibilidade": "Disponível",
+    "preco": "123123.00"
+  },
+  {
+    "produto": "dasdas",
+    "categoria": "Eletrônicos",
+    "disponibilidade": "Disponível",
+    "preco": "3123.00"
+  },
+  {
+    "produto": "adasdas",
+    "categoria": "Eletrônicos",
+    "disponibilidade": "Disponível",
+    "preco": "3123.00"
+  }
+]

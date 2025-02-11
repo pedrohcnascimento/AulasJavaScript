@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada e Saída com Tabela</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cadastro de Produtos</h2>
+    <form id="produtoForm">
+        <label for="produto">Produto:</label>
+        <input type="text" id="produto" required>
+        
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" required>
+            <option value="Eletrônicos">Eletrônicos</option>
+            <option value="Roupas">Roupas</option>
+            <option value="Alimentos">Alimentos</option>
+        </select>
+        
+        <label>Disponibilidade:</label>
+        <input type="radio" name="disponibilidade" value="Disponível" checked> Disponível
+        <input type="radio" name="disponibilidade" value="Indisponível"> Indisponível
+        
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" step="0.01" required>
+        <button type="submit">Adicionar</button>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Disponibilidade</th>
+                <th>Preço (R$)</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody>
+    </table>
+
+    <button onclick="salvarDadosJSON()">Salvar Dados em JSON</button>
+
+    <script>
+        // Array para armazenar os produtos adicionados
+        let produtos = [];
+
+        // Captura o evento de envio do formulário e adiciona os dados na tabela
+        document.getElementById("produtoForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Obtém os valores inseridos no formulário
+            var produto = document.getElementById("produto").value;
+            var categoria = document.getElementById("categoria").value;
+            var disponibilidade = document.querySelector('input[name="disponibilidade"]:checked').value;
+            var preco = parseFloat(document.getElementById("preco").value).toFixed(2); // Formata o preço para duas casas decimais
+            
+            // Adiciona o produto ao array
+            let index = produtos.length; // Índice do item
+            produtos.push({ produto, categoria, disponibilidade, preco });
+
+            // Atualiza a tabela
+            atualizarTabela();
+
+            // Limpa o formulário após a adição dos dados
+            document.getElementById("produtoForm").reset();
+        });
+
+        // Função para atualizar a tabela sempre que um produto for adicionado ou removido
+        function atualizarTabela() {
+            var tabelaBody = document.getElementById("tabelaBody");
+            tabelaBody.innerHTML = ""; // Limpa a tabela antes de recriar os itens
+
+            produtos.forEach((item, index) => {
+                var newRow = tabelaBody.insertRow();
+
+                newRow.insertCell(0).textContent = item.produto;
+                newRow.insertCell(1).textContent = item.categoria;
+                newRow.insertCell(2).textContent = item.disponibilidade;
+                newRow.insertCell(3).textContent = item.preco;
+
+                // Cria um botão de exclusão para remover o item
+                var cellExcluir = newRow.insertCell(4);
+                var botaoExcluir = document.createElement("button");
+                botaoExcluir.textContent = "Excluir";
+
+                // Define a função do botão de exclusão, chamando excluirProduto(index) quando clicado
+                botaoExcluir.onclick = function() {
+                    excluirProduto(index);
+                };
+
+                // Adiciona o botão de exclusão dentro da célula da tabela
+                // appendChild() é usado para inserir o botão dentro da célula <td>
+                cellExcluir.appendChild(botaoExcluir);
+            });
+        }
+
+        // Função para excluir um produto da lista
+        function excluirProduto(index) {
+            // splice() remove um item do array, especificando o índice e a quantidade a ser removida
+            // No caso, removemos 1 item no índice fornecido
+            produtos.splice(index, 1);
+
+            // Atualiza a tabela após a exclusão
+            atualizarTabela();
+        }
+
+        // Função para salvar os dados cadastrados em um arquivo JSON
+        function salvarDadosJSON() {
+            // Converte o array 'produtos' para uma string JSON formatada
+            const jsonData = JSON.stringify(produtos, null, 2);
+
+            // Cria um novo objeto Blob contendo os dados do JSON
+            const blob = new Blob([jsonData], { type: "application/json" });
+
+            // Cria um elemento <a> dinamicamente, que será usado para iniciar o download
+            const link = document.createElement("a");
+
+            // Define o atributo 'href' do link como uma URL gerada a partir do Blob
+            link.href = URL.createObjectURL(blob);
+
+            // Define o nome do arquivo para o download
+            link.download = "produtos.json";
+
+            // Simula um clique no link para iniciar o download automaticamente
+            link.click();
+
+            // Remove a URL do objeto Blob da memória para evitar vazamento de recursos
+            URL.revokeObjectURL(link.href);
+        }
+    </script>
+</body>
+</html>

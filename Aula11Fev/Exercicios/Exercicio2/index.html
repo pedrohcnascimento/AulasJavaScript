@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio2</title>
+    <style>
+          body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h2 {
+            color: #bb86fc;
+            margin-top: 20px;
+        }
+        form {
+            background: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 600px;
+        }
+        form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="datetime-local"],
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #2c2c2c;
+            color: #e0e0e0;
+        }
+        form button {
+            background-color: #bb86fc;
+            color: #121212;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        form button:hover {
+            background-color: #9a67ea;
+        }
+        table {
+            width: 90%;
+            max-width: 800px;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #1f1f1f;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+        }
+        button {
+    cursor: pointer;
+    background-color: #bb86fc;
+    color: #121212;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 5px; /* Adiciona um pequeno espaço entre os botões */
+    }
+    button:hover {
+    background-color: #9a67ea;
+    }
+        @media (max-width: 600px) {
+            form, table {
+                width: 100%;
+                margin: 0;
+            }
+            form input[type="text"],
+            form input[type="number"],
+            form input[type="datetime-local"],
+            form select {
+                width: 100%;
+            }
+            form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>Agendamendo te consulta</h2>
+    <form id="pacienteForm">
+        <input type="hidden" id="editIndex" value="-1">
+
+        <label for="nomePaciente">Nome:</label>
+        <input type="text" id="nomePaciente" required>
+        
+        <label for="medicoResponsavel">Médico responsável:</label>
+        <select id="medicoResponsavel" required>
+            <option value="rafael">Rafael</option>
+            <option value="lucas">Lucas</option>
+            <option value="leticia">Letícia</option>
+        </select>
+
+        <label for="especialidadeMedica">Especialidade médica:</label>
+        <select id="especialidadeMedica" required>
+            <option value="pediatria">Pediatria</option>
+            <option value="cardiologia">Cardiologia</option>
+            <option value="otorrinolaringologia">otorrinolaringologia</option>
+        </select>
+        
+        <label for="precoConsulta">Preço da consulta:</label>
+        <input type="number" id="precoConsulta" step="0.01" required>
+
+        <label for="diaHoraConsulta">Dia e horário do agendamento:</label>
+        <input type="datetime-local" id="diaHoraConsulta" required>
+
+        <button type="submit">Agendar</button>
+    </form>
+
+    <h2>Lista de agendamentos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do paciente</th>
+                <th>Médico responsável</th>
+                <th>Especialidade médica</th>
+                <th>Preço (R$)</th>
+                <th>Dia e hora da consulta</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody>
+    </table>
+
+    <button onclick="salvarDadosJSON()">Salvar Dados em JSON</button>
+    
+</body>
+<script src="Script/script.js"></script>
+</html>

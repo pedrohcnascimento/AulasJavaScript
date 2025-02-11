@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação de Notas</title>
+</head>
+<body>
+    <!-- Título do formulário -->
+    <h2>Insira sua nota (0 a 10):</h2>
+    
+    <!-- Campo de entrada para nota -->
+    <!-- Define um input numérico para a nota, permitindo valores de 0 a 10 com incrementos de 0.1 uma casa -->
+    <input type="number" id="nota" min="0" max="10" step="0.1">
+    
+    <!-- Botão para verificar a classificação -->
+    <button onclick="verificarNota()">Verificar</button>
+    
+    <!-- Parágrafo onde o resultado será exibido -->
+    <p id="resultado"></p>
+
+    <script>
+        function verificarNota() {
+            // Obtém o valor digitado pelo usuário e converte para número decimal
+            var nota = parseFloat(document.getElementById("nota").value);
+            var resultado = document.getElementById("resultado");
+
+            // Verifica se a nota está dentro do intervalo válido
+            if (nota < 0 || nota > 10 || isNaN(nota)) {
+                resultado.innerText = "Por favor, insira uma nota válida entre 0 e 10.";
+            } else if (nota >= 7) {
+                resultado.innerText = "Aprovado!";
+            } else if (nota >= 5) {
+                resultado.innerText = "Recuperação.";
+            } else {
+                resultado.innerText = "Reprovado.";
+            }
+        }
+    </script>
+</body>
+</html>

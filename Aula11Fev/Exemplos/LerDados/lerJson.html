@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+
+    <style>
+        /* Estilos para a tabela */
+        table {
+            width: 100%; /* Define a largura total da tabela */
+            border-collapse: collapse; /* Remove espaços entre as bordas das células */
+            margin-top: 20px; /* Adiciona um espaçamento acima da tabela */
+        }
+
+        /* Estilos para as células do cabeçalho e do corpo */
+        th, td {
+            border: 1px solid black; /* Adiciona borda preta às células */
+            padding: 10px; /* Adiciona espaçamento interno */
+            text-align: left; /* Alinha o texto à esquerda */
+        }
+
+        /* Estilos para o botão */
+        button {
+            margin-top: 10px; /* Adiciona um espaçamento acima do botão */
+            padding: 10px; /* Adiciona espaçamento interno */
+            font-size: 16px; /* Define o tamanho da fonte */
+            cursor: pointer; /* Muda o cursor para indicar que é clicável */
+        }
+    </style>
+</head>
+<body>
+    <!-- Título principal da página -->
+    <h2>Lista de Produtos</h2>
+
+    <!-- Botão que chama a função para carregar os produtos -->
+    <button onclick="carregarDados()">Carregar Produtos</button> 
+
+    <!-- Estrutura da tabela onde os produtos serão exibidos -->
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th> <!-- Cabeçalho da coluna de produtos -->
+                <th>Preço (R$)</th> <!-- Cabeçalho da coluna de preços -->
+            </tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody> <!-- Corpo da tabela onde os produtos serão adicionados -->
+    </table>
+
+    <script>
+        // Função assíncrona para buscar os dados do arquivo JSON e exibir na tabela
+        async function carregarDados() {
+            try {
+                // Faz a requisição para obter o conteúdo do arquivo 'produtos.json'
+                // O uso de 'await' faz com que o código aguarde a resposta antes de continuar
+                const response = await fetch('produtos.json'); 
+                
+                // Converte a resposta para um objeto JSON
+                // 'await' é necessário porque a conversão do JSON também é assíncrona
+                const produtos = await response.json();
+                
+                // Seleciona o corpo da tabela onde os produtos serão exibidos
+                let tabelaBody = document.getElementById("tabelaBody");
+                
+                // Limpa a tabela antes de adicionar novos dados, evitando duplicações
+                tabelaBody.innerHTML = ""; 
+
+                // Percorre cada item do JSON e adiciona uma nova linha na tabela
+                produtos.forEach(produto => {
+                    let newRow = tabelaBody.insertRow(); // Cria uma nova linha na tabela
+                    newRow.insertCell(0).textContent = produto.produto; // Insere o nome do produto na primeira célula
+                    newRow.insertCell(1).textContent = parseFloat(produto.preco).toFixed(2); // Formata e insere o preço na segunda célula
+                });
+            } catch (error) {
+                // Caso ocorra um erro na requisição, exibe uma mensagem no console
+                console.error("Erro ao carregar os dados:", error);
+            }
+        }
+    </script>
+</body>
+</html>

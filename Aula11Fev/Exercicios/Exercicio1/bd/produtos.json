@@ -1,0 +1,52 @@
+[
+    {
+        "produto": "Notebook Dell",
+        "preco": 3500.00,
+        "categoria": "Eletrônicos"
+    },
+    {
+        "produto": "Smartphone Samsung",
+        "preco": 2500.50,
+        "categoria": "Eletrônicos"
+    },
+    {
+        "produto": "Mouse Sem Fio",
+        "preco": 150.99,
+        "categoria": "Periféricos"
+    },
+    {
+        "produto": "Teclado Mecânico",
+        "preco": 300.00,
+        "categoria": "Periféricos"
+    },
+    {
+        "produto": "Monitor 24''",
+        "preco": 1200.75,
+        "categoria": "Periféricos"
+    },
+    {
+        "produto": "Impressora Multifuncional",
+        "preco": 800.00,
+        "categoria": "Eletrônicos"
+    },
+    {
+        "produto": "HD Externo 1TB",
+        "preco": 350.00,
+        "categoria": "Hardware"
+    },
+    {
+        "produto": "Pen Drive 32GB",
+        "preco": 50.00,
+        "categoria": "Periféricos"
+    },
+    {
+        "produto": "Cadeira Gamer",
+        "preco": 800.00,
+        "categoria": "Móveis"
+    },
+    {
+        "produto": "Mesa Gamer",
+        "preco": 1200.00,
+        "categoria": "Móveis"
+    }
+]

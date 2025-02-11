@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificador de Número</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Verifique se um número é positivo, negativo ou zero</h2>
+    <input type="number" id="numero" placeholder="Digite um número">
+    <button onclick="verificarNumero()">Verificar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function verificarNumero() {
+            let numero = parseFloat(document.getElementById("numero").value);
+            let resultado = document.getElementById("resultado");
+
+            if (isNaN(numero)) {
+                resultado.innerText = "Por favor, insira um número válido.";
+                resultado.style.color = "red";
+            } else if (numero > 0) {
+                resultado.innerText = "O número é positivo.";
+                resultado.style.color = "green";
+            } else if (numero < 0) {
+                resultado.innerText = "O número é negativo.";
+                resultado.style.color = "blue";
+            } else {
+                resultado.innerText = "O número é zero.";
+                resultado.style.color = "orange";
+            }
+        }
+    </script>
+
+</body>
+</html>

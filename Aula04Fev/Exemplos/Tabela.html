@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada e Saída com Tabela</title>
+    <style>
+        /* Estilização da tabela para melhorar a aparência */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cadastro de Produtos</h2>
+    <!-- Formulário para entrada de dados do produto -->
+    <form id="produtoForm">
+        <label for="produto">Produto:</label>
+        <input type="text" id="produto" required> <!-- Campo de entrada para o nome do produto -->
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" step="0.01" required> <!-- Campo de entrada para o preço do produto -->
+        <button type="submit">Adicionar</button> <!-- Botão para adicionar o produto -->
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <!-- Tabela para exibir os produtos cadastrados -->
+    <table>
+        <!-- Cabeçalho da tabela contendo os títulos das colunas -->
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço (R$)</th>
+            </tr>
+        </thead>
+        <!-- Corpo da tabela onde os produtos adicionados serão inseridos dinamicamente -->
+        <tbody id="tabelaBody">
+            <!-- Linhas da tabela serão adicionadas dinamicamente aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        // Adiciona um evento ao formulário para capturar o envio dos dados
+        document.getElementById("produtoForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita que a página recarregue ao enviar o formulário
+            
+            // Captura os valores dos campos de entrada
+            var produto = document.getElementById("produto").value;
+            var preco = document.getElementById("preco").value;
+            
+            // Obtém o corpo da tabela onde os dados serão inseridos
+            var tabelaBody = document.getElementById("tabelaBody");
+            var newRow = tabelaBody.insertRow(); // Cria uma nova linha na tabela
+            newRow.insertCell(0).textContent = produto; // Insere o nome do produto na primeira célula
+            newRow.insertCell(1).textContent = parseFloat(preco).toFixed(2); // Insere o preço formatado na segunda célula
+            
+            // Limpa o formulário após adicionar os dados
+            document.getElementById("produtoForm").reset();
+        });
+    </script>
+</body>
+</html>

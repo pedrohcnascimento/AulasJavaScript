@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Idade</title>
+</head>
+<body>
+    <!-- Título da página -->
+    <h2>Digite sua idade:</h2>
+    
+    <!-- Campo de entrada para idade -->
+    <input type="number" id="idade">
+    
+    <!-- Botão que chama a função de verificação -->
+    <button onclick="verificarIdade()">Verificar</button>
+    
+    <!-- Parágrafo onde será exibido o resultado -->
+    <p id="resultado"></p>
+
+    <script>
+        function verificarIdade() {
+            // Obtém o valor digitado pelo usuário e converte para número inteiro
+            var idade = parseInt(document.getElementById("idade").value);
+            var resultado = document.getElementById("resultado");
+            
+            // Verifica a idade e exibe o resultado
+            if (idade >= 18) {
+                resultado.innerText = "Maior de idade.";
+            } else {
+                resultado.innerText = "Menor de idade.";
+            }
+        }
+    </script>
+</body>
+</html>

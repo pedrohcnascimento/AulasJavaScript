@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrada e Saída com Tabela</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cadastro de Produtos</h2>
+    <form id="produtoForm">
+        <input type="hidden" id="editIndex" value="-1">
+        <label for="produto">Produto:</label>
+        <input type="text" id="produto" required>
+        
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" required>
+            <option value="Eletrônicos">Eletrônicos</option>
+            <option value="Roupas">Roupas</option>
+            <option value="Alimentos">Alimentos</option>
+        </select>
+        
+        <label>Disponibilidade:</label>
+        <input type="radio" name="disponibilidade" value="Disponível" checked> Disponível
+        <input type="radio" name="disponibilidade" value="Indisponível"> Indisponível
+        
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" step="0.01" required>
+        <button type="submit">Salvar</button>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Categoria</th>
+                <th>Disponibilidade</th>
+                <th>Preço (R$)</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody>
+    </table>
+
+    <script>
+        let produtos = [];
+
+        document.getElementById("produtoForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let index = document.getElementById("editIndex").value;
+            let produto = document.getElementById("produto").value;
+            let categoria = document.getElementById("categoria").value;
+            let disponibilidade = document.querySelector('input[name="disponibilidade"]:checked').value;
+            let preco = parseFloat(document.getElementById("preco").value).toFixed(2);
+            
+            if (index === "-1") {
+                produtos.push({ produto, categoria, disponibilidade, preco });
+            } else {
+                produtos[index] = { produto, categoria, disponibilidade, preco };
+                document.getElementById("editIndex").value = "-1";
+            }
+            
+            atualizarTabela();
+            document.getElementById("produtoForm").reset();
+        });
+
+        function atualizarTabela() {
+            let tabelaBody = document.getElementById("tabelaBody");
+            tabelaBody.innerHTML = "";
+
+            produtos.forEach((item, index) => {
+                let newRow = tabelaBody.insertRow();
+                newRow.insertCell(0).textContent = item.produto;
+                newRow.insertCell(1).textContent = item.categoria;
+                newRow.insertCell(2).textContent = item.disponibilidade;
+                newRow.insertCell(3).textContent = item.preco;
+                
+                let cellAcoes = newRow.insertCell(4);
+                let botaoEditar = document.createElement("button");
+                botaoEditar.textContent = "Editar";
+                botaoEditar.onclick = function() {
+                    editarProduto(index);
+                };
+
+                let botaoExcluir = document.createElement("button");
+                botaoExcluir.textContent = "Excluir";
+                botaoExcluir.onclick = function() {
+                    excluirProduto(index);
+                };
+                
+                cellAcoes.appendChild(botaoEditar);
+                cellAcoes.appendChild(botaoExcluir);
+            });
+        }
+
+        function excluirProduto(index) {
+            produtos.splice(index, 1);
+            atualizarTabela();
+        }
+
+        function editarProduto(index) {
+            document.getElementById("editIndex").value = index;
+            document.getElementById("produto").value = produtos[index].produto;
+            document.getElementById("categoria").value = produtos[index].categoria;
+            document.querySelector(`input[name="disponibilidade"][value="${produtos[index].disponibilidade}"]`).checked = true;
+            document.getElementById("preco").value = produtos[index].preco;
+        }
+    </script>
+</body>
+</html>
