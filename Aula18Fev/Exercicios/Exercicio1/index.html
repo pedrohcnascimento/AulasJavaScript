@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio1</title>
+    <link rel="stylesheet" href="Estilos/style.css">
+</head>
+<body>
+    <!-- Título principal da página -->
+    <h2>Lista de Produtos (XML)</h2>
+
+    <!-- Botão que chama a função para carregar os produtos -->
+    <button onclick="carregarDados()">Carregar Produtos</button>
+
+    <!-- Estrutura da tabela onde os produtos serão exibidos -->
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th> <!-- Cabeçalho da coluna de produtos -->
+                <th>Preço (R$)</th> <!-- Cabeçalho da coluna de preços -->
+                <th>Preço com desconto(R$)</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody> <!-- Corpo da tabela onde os produtos serão adicionados -->
+    </table>
+</body>
+<script src="Script/script.js"></script>
+</html>

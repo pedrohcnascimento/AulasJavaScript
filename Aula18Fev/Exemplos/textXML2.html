@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerar XML com Múltiplos Registros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2>Cadastro de Produtos</h2>
+    <form id="produtoForm">
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" required><br>
+
+        <label for="categoria">Categoria:</label>
+        <input type="text" id="categoria" required><br>
+
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" step="0.01" required><br>
+
+        <button type="button" onclick="adicionarProduto()">Adicionar Produto</button>
+    </form>
+
+    <h2>Lista de Produtos</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Categoria</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaBody"></tbody>
+    </table>
+
+    <button onclick="gerarXML()">Gerar XML</button>
+    <button onclick="baixarXML()">Baixar XML</button>
+
+    <h2>XML Gerado:</h2>
+    <pre id="xmlOutput"></pre>
+
+    <script>
+        let produtos = []; // Array para armazenar os produtos
+        let xmlString = ""; // Variável para armazenar o XML gerado
+
+        function adicionarProduto() {
+            // Obtém os valores dos campos do formulário
+            let nome = document.getElementById("nome").value;
+            let categoria = document.getElementById("categoria").value;
+            let preco = document.getElementById("preco").value;
+
+            if (nome === "" || categoria === "" || preco === "") {
+                alert("Preencha todos os campos!");
+                return;
+            }
+
+            // Adiciona o produto ao array
+            produtos.push({ nome, categoria, preco });
+
+            // Atualiza a tabela na tela
+            atualizarTabela();
+
+            // Limpa os campos do formulário
+            document.getElementById("produtoForm").reset();
+        }
+
+        function atualizarTabela() {
+            let tabelaBody = document.getElementById("tabelaBody");
+            tabelaBody.innerHTML = ""; // Limpa a tabela antes de atualizar
+
+            produtos.forEach(produto => {
+                let newRow = tabelaBody.insertRow();
+                newRow.insertCell(0).textContent = produto.nome;
+                newRow.insertCell(1).textContent = produto.categoria;
+                newRow.insertCell(2).textContent = parseFloat(produto.preco).toFixed(2);
+            });
+        }
+
+        function gerarXML() {
+            if (produtos.length === 0) {
+                alert("Adicione pelo menos um produto antes de gerar o XML!");
+                return;
+            }
+
+            // Cria a estrutura XML
+            xmlString = `<?xml version="1.0" encoding="UTF-8"?>\n<produtos>\n`;
+            
+            produtos.forEach(produto => {
+                xmlString += `    <produto>\n`;
+                xmlString += `        <nome>${produto.nome}</nome>\n`;
+                xmlString += `        <categoria>${produto.categoria}</categoria>\n`;
+                xmlString += `        <preco>${produto.preco}</preco>\n`;
+                xmlString += `    </produto>\n`;
+            });
+
+            xmlString += `</produtos>`;
+
+            // Exibe o XML na tela
+            document.getElementById("xmlOutput").textContent = xmlString;
+        }
+
+        function baixarXML() {
+            if (xmlString === "") {
+                alert("Primeiro gere o XML!");
+                return;
+            }
+
+            // Cria um objeto Blob para armazenar o XML
+            let blob = new Blob([xmlString], { type: "application/xml" });
+            let link = document.createElement("a");
+
+            // Cria um link para download do arquivo XML
+            link.href = URL.createObjectURL(blob);
+            link.download = "produtos.xml";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>

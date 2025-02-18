@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<produtos>
+    <produto>
+        <nome>Notebook</nome>
+        <preco>3500.00</preco>
+    </produto>
+    <produto>
+        <nome>Mouse</nome>
+        <preco>150.00</preco>
+    </produto>
+    <produto>
+        <nome>Teclado</nome>
+        <preco>250.00</preco>
+    </produto>
+</produtos>

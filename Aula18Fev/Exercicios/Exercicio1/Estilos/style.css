@@ -1,0 +1,21 @@
+ /* Estilos para a tabela */
+ table {
+    width: 100%; /* Define a largura total da tabela */
+    border-collapse: collapse; /* Remove os espaços entre as bordas das células */
+    margin-top: 20px; /* Adiciona espaçamento acima da tabela */
+}
+
+/* Estilos para as células do cabeçalho e corpo da tabela */
+th, td {
+    border: 1px solid black; /* Adiciona bordas às células */
+    padding: 10px; /* Adiciona espaçamento interno às células */
+    text-align: left; /* Alinha o conteúdo à esquerda */
+}
+
+/* Estilos para o botão */
+button {
+    margin-top: 10px; /* Adiciona espaçamento acima do botão */
+    padding: 10px; /* Adiciona espaçamento interno ao botão */
+    font-size: 16px; /* Define o tamanho da fonte */
+    cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
+}
