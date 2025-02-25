@@ -1,0 +1,52 @@
+/* Estilização geral do corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte padrão */
+    display: flex; /* Usa flexbox para centralizar os elementos */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Define a altura total da tela */
+    background-color: #f4f4f4; /* Cor de fundo cinza claro */
+}
+
+/* Estilização do container (login e agendamento) */
+.container {
+    background: white; /* Fundo branco */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    width: 800px; /* Largura fixa */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilização dos campos de entrada e botões */
+input, button {
+    width: 80%; /* Define a largura de 80% do container */
+    margin: 10px 0; /* Margem acima e abaixo */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda cinza */
+    border-radius: 5px; /* Cantos arredondados */
+}
+
+/* Oculta um elemento quando a classe "hidden" está presente */
+.hidden {
+    display: none;
+}
+
+/* Estilização da tabela de consultas */
+table {
+    width: 100%; /* Define a largura total do container */
+    margin-top: 15px; /* Adiciona um espaçamento acima */
+    border-collapse: collapse; /* Remove espaços entre as bordas */
+}
+
+/* Estilização das células do cabeçalho da tabela */
+th, td {
+    border: 1px solid #ccc; /* Borda cinza */
+    padding: 8px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Fundo do cabeçalho da tabela */
+th {
+    background-color: #f0f0f0;
+}

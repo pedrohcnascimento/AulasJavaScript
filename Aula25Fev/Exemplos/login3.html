@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Consultas</title>
+    <style>
+        /* Estilização geral do corpo da página */
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte padrão */
+            display: flex; /* Usa flexbox para centralizar os elementos */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Define a altura total da tela */
+            background-color: #f4f4f4; /* Cor de fundo cinza claro */
+        }
+
+        /* Estilização do container (login e agendamento) */
+        .container {
+            background: white; /* Fundo branco */
+            padding: 20px; /* Espaçamento interno */
+            border-radius: 10px; /* Cantos arredondados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve */
+            width: 400px; /* Largura fixa */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        /* Estilização dos campos de entrada e botões */
+        input, button {
+            width: 80%; /* Define a largura de 80% do container */
+            margin: 10px 0; /* Margem acima e abaixo */
+            padding: 10px; /* Espaçamento interno */
+            border: 1px solid #ccc; /* Borda cinza */
+            border-radius: 5px; /* Cantos arredondados */
+        }
+
+        /* Oculta um elemento quando a classe "hidden" está presente */
+        .hidden {
+            display: none;
+        }
+
+        /* Estilização da tabela de consultas */
+        table {
+            width: 100%; /* Define a largura total do container */
+            margin-top: 15px; /* Adiciona um espaçamento acima */
+            border-collapse: collapse; /* Remove espaços entre as bordas */
+        }
+
+        /* Estilização das células do cabeçalho da tabela */
+        th, td {
+            border: 1px solid #ccc; /* Borda cinza */
+            padding: 8px; /* Espaçamento interno */
+            text-align: center; /* Centraliza o texto */
+        }
+
+        /* Fundo do cabeçalho da tabela */
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Container de Login -->
+    <div class="container1" id="loginContainer">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <!-- Container de Agendamento de Consultas (inicialmente oculto) -->
+    <div class="container2 hidden" id="agendaContainer">
+        <h2>Agendar Consulta</h2>
+        <input type="text" id="paciente" placeholder="Nome do Paciente">
+        <input type="date" id="data">
+        <input type="time" id="hora">
+        <button onclick="agendar()">Agendar</button>
+
+        <h3>Consultas Agendadas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Paciente</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaConsultas">
+                <!-- As consultas serão adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        /* 
+        Função de login: verifica se o usuário e senha estão corretos.
+        Se sim, esconde o login e mostra a área de agendamento.
+        */
+        function login() {
+            // Obtém os valores digitados nos campos de usuário e senha
+            let user = document.getElementById('username').value;
+            let pass = document.getElementById('password').value;
+
+            // Verifica se o usuário e a senha estão corretos
+            if (user === "admin" && pass === "1234") {
+                // Esconde o container de login
+                document.getElementById('loginContainer').classList.add('hidden');
+                // Mostra o container de agendamento
+                document.getElementById('agendaContainer').classList.remove('hidden');
+            } else {
+                // Exibe um alerta caso os dados estejam incorretos
+                alert("Usuário ou senha incorretos!");
+            }
+        }
+
+        /*
+        Função para agendar uma consulta: adiciona uma nova linha na tabela.
+        */
+        function agendar() {
+            // Obtém os valores dos campos preenchidos
+            let paciente = document.getElementById('paciente').value;
+            let data = document.getElementById('data').value;
+            let hora = document.getElementById('hora').value;
+
+            // Verifica se todos os campos foram preenchidos
+            if (paciente && data && hora) {
+                // Obtém a tabela onde os agendamentos serão exibidos
+                let tabela = document.getElementById('tabelaConsultas');
+
+                // Cria uma nova linha para a tabela
+                let linha = document.createElement('tr');
+
+                // Cria as células da linha
+                let colunaPaciente = document.createElement('td');
+                let colunaData = document.createElement('td');
+                let colunaHora = document.createElement('td');
+
+                // Define o conteúdo de cada célula
+                colunaPaciente.textContent = paciente;
+                colunaData.textContent = data;
+                colunaHora.textContent = hora;
+
+                // Adiciona as células à linha
+                linha.appendChild(colunaPaciente);
+                linha.appendChild(colunaData);
+                linha.appendChild(colunaHora);
+
+                // Adiciona a linha à tabela
+                tabela.appendChild(linha);
+
+                // Limpa os campos de entrada após a inclusão
+                document.getElementById('paciente').value = "";
+                document.getElementById('data').value = "";
+                document.getElementById('hora').value = "";
+            } else {
+                // Exibe um alerta caso algum campo esteja vazio
+                alert("Preencha todos os campos!");
+            }
+        }
+    </script>
+</body>
+</html>

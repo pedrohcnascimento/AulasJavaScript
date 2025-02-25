@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Define o estilo geral da página */
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte do texto */
+            display: flex; /* Usa flexbox para centralizar o conteúdo */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Ocupa toda a altura da tela */
+            background-color: #f4f4f4; /* Define um fundo cinza claro */
+        }
+        
+        /* Estiliza o contêiner do dashboard */
+        .dashboard-container {
+            background-color: white; /* Define fundo branco */
+            padding: 20px; /* Adiciona espaçamento interno */
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra para efeito 3D */
+            text-align: center; /* Centraliza o texto dentro do contêiner */
+        }
+        
+        /* Define o estilo do título principal */
+        h1 {
+            color: #007BFF; /* Define a cor azul para o título */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Bem-vindo ao Dashboard</h1>
+        <!-- Parágrafo onde será exibida a mensagem correspondente ao tipo de usuário -->
+        <p id="user-role-message"></p>
+        <label>Usuário:</label>
+        <input type="text" id="user">
+        <button onclick="logar()">Logar</button>
+        <!-- Botão para sair do sistema -->
+        <button onclick="logout()">Sair</button>
+    </div>
+
+    <script>
+        // Simulação do tipo de usuário (valor fictício, pode ser alterado dinamicamente)
+        let messageElement = document.getElementById("user-role-message");
+        function logar(){
+            let userRole = document.getElementById("user").value;
+        // Estrutura de decisão para definir a mensagem de acordo com o tipo de usuário
+        switch (userRole) {
+            case "admin":
+                // Mensagem para usuários com perfil de administrador
+                messageElement.innerText = "Você tem acesso total ao sistema.";
+                break;
+            case "editor":
+                // Mensagem para usuários que podem editar conteúdos
+                messageElement.innerText = "Você pode editar conteúdos, mas não gerenciar usuários.";
+                break;
+            case "viewer":
+                // Mensagem para usuários que apenas visualizam conteúdos
+                messageElement.innerText = "Você pode visualizar os conteúdos, mas não pode editar.";
+                break;
+            default:
+                // Mensagem para caso o tipo de usuário seja desconhecido
+                messageElement.innerText = "Tipo de usuário não reconhecido.";
+        }
+    }
+        // Função para sair do sistema e redirecionar para a página de login
+        function logout() {
+            window.location.href = "login2.html"; // Redireciona para a página de login
+        }
+    </script>
+</body>
+</html>

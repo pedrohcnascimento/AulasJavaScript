@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Login</title>
+    <style>
+        /* Define o estilo geral da página */
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte do texto */
+            display: flex; /* Usa flexbox para centralizar o conteúdo */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Ocupa toda a altura da tela */
+            background-color: #f4f4f4; /* Define um fundo cinza claro */
+        }
+        
+        /* Estiliza o contêiner do login */
+        .login-container {
+            background-color: white; /* Define fundo branco */
+            padding: 20px; /* Espaçamento interno */
+            border-radius: 10px; /* Bordas arredondadas */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra para efeito 3D */
+            text-align: center; /* Centraliza o conteúdo */
+        }
+        
+        /* Estiliza os campos de entrada */
+        input {
+            display: block; /* Exibe cada input como bloco */
+            width: 80%; /* Faz o input ocupar toda a largura */
+            padding: 10px; /* Adiciona espaço interno */
+            margin: 10px 0; /* Espaçamento entre os elementos */
+            border: 1px solid #ccc; /* Define borda cinza clara */
+            border-radius: 5px; /* Bordas arredondadas */
+        }
+        
+        /* Estiliza o botão de login */
+        button {
+            width: 80%; /* Ocupa toda a largura do contêiner */
+            padding: 10px; /* Espaçamento interno */
+            background-color: #007BFF; /* Cor azul padrão */
+            color: white; /* Texto branco */
+            border: none; /* Remove a borda */
+            border-radius: 5px; /* Bordas arredondadas */
+            cursor: pointer; /* Cursor indicando clique */
+        }
+        
+        /* Muda a cor do botão quando o mouse passa por cima */
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Estiliza a mensagem de erro ou sucesso */
+        .message {
+            margin-top: 10px; /* Espaçamento superior */
+            font-weight: bold; /* Texto em negrito */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <!-- Campo de entrada para o usuário -->
+        <input type="text" id="usuario" placeholder="Usuário">
+        <!-- Campo de entrada para a senha -->
+        <input type="password" id="senha" placeholder="Senha">
+        <!-- Botão que chama a função verificarLogin() -->
+        <button onclick="verificarLogin()">Entrar</button>
+        <!-- Parágrafo onde será exibida a mensagem de erro ou sucesso -->
+        <p id="mensagem" class="message"></p>
+    </div>
+
+    <script>
+        function verificarLogin() {
+            // Captura os valores digitados pelo usuário e senha
+            let usuario = document.getElementById("usuario").value;
+            let senha = document.getElementById("senha").value;
+            let mensagem = document.getElementById("mensagem");
+
+            // Verifica se os campos foram preenchidos
+            if (usuario === "" || senha === "") {
+                mensagem.style.color = "red"; // Define a cor da mensagem como vermelha
+                mensagem.innerText = "Preencha todos os campos!"; // Exibe mensagem de erro
+                return; // Sai da função
+            }
+
+            // Verifica se o usuário e senha estão corretos (dados fictícios)
+            if (usuario === "admin" && senha === "1234") {
+                mensagem.style.color = "green"; // Define a cor da mensagem como verde
+                mensagem.innerText = "Login bem-sucedido!"; // Exibe mensagem de sucesso
+
+               window.location.href = "dash.html";
+                                 
+            } else {
+                mensagem.style.color = "red"; // Define a cor da mensagem como vermelha
+                mensagem.innerText = "Usuário ou senha incorretos!"; // Exibe mensagem de erro
+            }
+        }
+    </script>
+</body>
+</html>

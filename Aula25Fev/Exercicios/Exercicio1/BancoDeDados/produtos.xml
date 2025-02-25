@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<produtos>
+    <produto>
+        <nome>asdasd</nome>
+        <categoria>adas</categoria>
+        <preco>12312</preco>
+    </produto>
+    <produto>
+        <nome>dasdasda</nome>
+        <categoria>dasdadas12312</categoria>
+        <preco>131231</preco>
+    </produto>
+</produtos>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+    <link rel="stylesheet" href="Estilos/style.css">
+</head>
+<body>
+    <!-- Container de Login -->
+    <div class="container1" id="loginContainer">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Usuário">
+        <input type="password" id="password" placeholder="Senha">
+        
+        <h3>Selecione o tipo de arquivo:</h3>
+        <input type="radio" id="xml" name="fileType" value="xml">
+        <label for="xml">Arquivos XML</label><br>
+        <input type="radio" id="json" name="fileType" value="json">
+        <label for="json">Arquivos JSON</label><br>
+
+        <button onclick="login()">Entrar</button>
+    </div>
+
+    <!-- Container de Produtos JSON -->
+    <div class="container2 hidden" id="produtoContainerJSON">
+        <h2>Cadastro de Produtos</h2>
+        <form id="produtoFormJSON">
+            <label for="nomeJSON">Nome:</label><br>
+            <input type="text" id="nomeJSON" required><br>
+
+            <label for="categoriaJSON">Categoria:</label><br>
+            <input type="text" id="categoriaJSON" required><br>
+
+            <label for="precoJSON">Preço:</label><br>
+            <input type="number" id="precoJSON" step="0.01" required><br>
+
+            <button type="button" onclick="adicionarProduto('JSON')">Adicionar Produto</button>
+        </form>
+        <h2>Importar arquivo JSON:</h2>
+        <input type="file" id="fileInputJSON" accept=".json">
+        <button onclick="carregarDados('JSON')">Carregar dados do arquivo</button>
+        <!-- Estrutura da tabela onde os produtos serão exibidos -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th> 
+                    <th>Preço (R$)</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaBodyJSON"></tbody> <!-- Corpo da tabela onde os produtos serão adicionados -->
+        </table>
+
+        <button onclick="baixarJson()">Baixar arquivo .json</button>
+    </div>
+
+    <!-- Container de Produtos XML -->
+    <div class="container3 hidden" id="produtoContainerXML">
+        <h2>Cadastro de Produtos</h2>
+        <form id="produtoFormXML">
+            <label for="nomeXML">Nome:</label><br>
+            <input type="text" id="nomeXML" required><br>
+
+            <label for="categoriaXML">Categoria:</label><br>
+            <input type="text" id="categoriaXML" required><br>
+
+            <label for="precoXML">Preço:</label><br>
+            <input type="number" id="precoXML" step="0.01" required><br>
+
+            <button type="button" onclick="adicionarProduto('XML')">Adicionar Produto</button>
+        </form>
+        <h2>Importar arquivo XML:</h2>
+        <input type="file" id="fileInputXML" accept=".xml">
+        <button onclick="carregarDados('XML')">Carregar dados do arquivo</button>
+        <!-- Estrutura da tabela onde os produtos serão exibidos -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th> 
+                    <th>Preço (R$)</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaBodyXML"></tbody> <!-- Corpo da tabela onde os produtos serão adicionados -->
+        </table>
+        <button onclick="gerarXML()">Gerar arquivo .xml</button>
+        <button onclick="baixarXML()">Baixar arquivo .xml</button>
+
+        <h2>Estrutura de arquivo gerado:</h2>
+        <pre id="geradorOutput"></pre>
+    </div>
+</body>
+<script src="Script/script.js"></script>
+</html>

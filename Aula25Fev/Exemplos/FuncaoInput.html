@@ -1,0 +1,69 @@
+<!-- Seção de Importação -->
+<div>
+  <label for="fileInput">Importar Arquivo (JSON ou XML):</label>
+  <input type="file" id="fileInput" accept=".xml,.json">
+</div>
+
+
+//Função para ler o arquivo importado (JSON ou XML)
+function lerArquivo(event) {
+  // Obtém o arquivo selecionado
+  const file = event.target.files[0];
+  if (!file) return; // Se não houver arquivo, encerra a função.
+
+  const reader = new FileReader(); // Cria um objeto FileReader para ler o arquivo
+  reader.onload = function(e) {
+    const conteudo = e.target.result; // Obtém o conteúdo do arquivo
+    const fileName = file.name.toLowerCase(); // Obtém o nome do arquivo em minúsculas
+    
+    try {
+      // Verifica se o arquivo é JSON
+      if (fileName.endsWith(".json")) {
+        // Processa o arquivo JSON
+        const data = JSON.parse(conteudo); // Faz o parse do conteúdo JSON
+        if (Array.isArray(data)) {
+          produtos = data; // Se o JSON for um array, armazena diretamente
+        } else if (data.produtos && Array.isArray(data.produtos)) {
+          produtos = data.produtos; // Se o JSON tiver a chave "produtos", usa esse array
+        } else {
+          alert("Estrutura JSON inválida!"); // Se a estrutura do JSON for inválida, exibe um alerta
+          return;
+        }
+      } 
+      // Verifica se o arquivo é XML
+      else if (fileName.endsWith(".xml")) {
+        // Processa o arquivo XML
+        const parser = new DOMParser(); // Cria um objeto DOMParser para processar o XML
+        const xmlDoc = parser.parseFromString(conteudo, "application/xml"); // Converte o conteúdo em um documento XML
+        const prodElements = xmlDoc.getElementsByTagName("produto"); // Obtém todos os elementos <produto>
+        produtos = []; // Cria um array vazio para armazenar os produtos
+        
+        // Itera sobre todos os elementos de produto no XML
+        for (let i = 0; i < prodElements.length; i++) {
+          const nome = prodElements[i].getElementsByTagName("nome")[0].textContent; // Obtém o nome do produto
+          const categoria = prodElements[i].getElementsByTagName("categoria")[0].textContent; // Obtém a categoria do produto
+          const preco = prodElements[i].getElementsByTagName("preco")[0].textContent; // Obtém o preço do produto
+          produtos.push({ nome, categoria, preco }); // Adiciona o produto ao array de produtos
+        }
+      } 
+      // Se o arquivo não for JSON nem XML
+      else {
+        alert("Tipo de arquivo não suportado! Selecione um arquivo JSON ou XML."); // Exibe alerta para tipo de arquivo não suportado
+        return;
+      }
+      
+      atualizarTabela(); // Atualiza a tabela com os dados dos produtos
+      alert("Arquivo importado com sucesso!"); // Exibe um alerta de sucesso
+
+    } catch (error) {
+      // Se ocorrer algum erro ao processar o arquivo, exibe o erro
+      alert("Erro ao processar o arquivo: " + error.message);
+    }
+  };
+
+  // Lê o arquivo como texto
+  reader.readAsText(file);
+}
+
+// Associa o evento de mudança no input de arquivo com a função lerArquivo
+document.getElementById("fileInput").addEventListener("change", lerArquivo);
