@@ -3,6 +3,18 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column; /* Empilha os elementos na vertical */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    height: 100vh; /* Garante que o body ocupe a altura total da tela */
+}
+
+.container {
+    text-align: center; /* Centraliza o texto dentro do container */
+    width: 100%; /* Garante que o container ocupe toda a largura disponível */
+    max-width: 600px; /* Limita a largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
 }
 
 h1, h2 {
@@ -13,19 +25,84 @@ h1, h2 {
 ul#lista {
     list-style-type: none;
     padding: 0;
+    margin: 20px 0;
     max-width: 600px;
     margin: 20px auto;
 }
 
 ul#lista li {
+    display: flex; /* Alinha os itens em linha */
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    justify-content: flex-start; /* Alinha os itens ao topo */
+    align-items: flex-start; /* Alinha os itens à esquerda */
     background: #fff;
     margin: 10px 0;
-    padding: 10px;
+    padding: 15px; /* Aumenta o espaçamento interno */
     border: 1px solid #ddd;
     border-radius: 4px;
+    word-wrap: break-word; /* Quebra o texto longo automaticamente */
+    width: 100%; /* Garante que a largura ocupe o espaço disponível */
+    max-width: 600px; /* Limita a largura máxima */
 }
 
-input[type="text"], input[type="email"] {
+ul#lista li span {
+    width: 100%; /* O texto ocupa toda a largura disponível */
+    margin-bottom: 10px; /* Adiciona espaço entre o nome/data e a descrição */
+}
+
+ul#lista li span strong {
+    display: block; /* Faz o nome ocupar uma linha separada */
+    font-size: 16px; /* Aumenta o tamanho da fonte do nome */
+    font-weight: bold;
+    color: #333;
+}
+
+ul#lista li span em {
+    display: block; /* Faz a descrição ocupar uma linha separada */
+    font-size: 14px; /* Define o tamanho da fonte da descrição */
+    color: #555;
+}
+
+ul#lista li div {
+    display: flex; /* Alinha os botões em linha */
+    justify-content: flex-end; /* Alinha os botões à direita */
+    width: 100%; /* Garante que os botões ocupem toda a largura disponível */
+    margin-top: 10px; /* Adiciona espaço entre a descrição e os botões */
+}
+
+ul#lista li button {
+    margin-left: 10px; /* Espaçamento entre os botões */
+    padding: 10px 15px; /* Aumenta o tamanho dos botões */
+    font-size: 14px; /* Aumenta o tamanho da fonte dos botões */
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+ul#lista li button:hover {
+    background-color: #0056b3;
+}
+
+ul#lista li button:nth-child(2) {
+    background-color: #28a745; /* Botão "Concluir" */
+}
+
+ul#lista li button:nth-child(2):hover {
+    background-color: #218838;
+}
+
+ul#lista li button:nth-child(3) {
+    background-color: #dc3545; /* Botão "Excluir" */
+}
+
+ul#lista li button:nth-child(3):hover {
+    background-color: #c82333;
+}
+
+input[type="text"], input[type="date"], textarea {
     display: block;
     width: calc(100% - 22px);
     margin: 10px auto;
