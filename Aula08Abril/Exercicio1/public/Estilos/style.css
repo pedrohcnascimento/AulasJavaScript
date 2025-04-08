@@ -1,0 +1,137 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+/* Ajusta o layout para posicionar os contêineres */
+body {
+    background-color: rgb(5, 4, 4);
+    display: flex;
+    justify-content: space-between; /* Espaça os contêineres */
+    align-items: flex-start; /* Alinha os contêineres no topo */
+    padding: 20px; /* Adiciona um espaçamento interno ao body */
+    height: 100vh; /* Define a altura da página */
+}
+
+/* Estiliza o contêiner do formulário */
+.container:first-of-type {
+    margin-top: 250px;
+    margin-left: 100px; /* Margem à esquerda */
+    margin-right: auto; /* Empurra o contêiner para a esquerda */
+}
+
+/* Estiliza o contêiner da lista de usuários */
+.container:last-of-type {
+    margin-right: 100px; /* Margem à direita */
+    margin-left: auto; /* Empurra o contêiner para a direita */
+    width: 50%; /* Ajusta a largura do contêiner da lista */
+}
+#tabela-container {
+    display: none;
+    margin-top: 40px; /* Aumente o valor para mais espaçamento */
+}
+/* Ajusta a tabela para ocupar toda a largura do contêiner */
+#tabela-container table {
+    width: 100%;
+}
+.container{
+    background-color: rgb(37, 37, 37);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 3px 3px 10px rgba(2, 5, 180, 0.527);
+    width: 320px;
+    color: white;
+}
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: rgb(0, 0, 255);
+}
+.form-group{
+    margin-bottom: 10px;
+}
+label{
+    font-weight: bold;
+    display: block;
+    color:rgb(0, 0, 255);
+}
+input{
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 255);
+    background-color: rgb(92, 90, 90);
+}
+.btn-group{
+    display: flex;
+    justify-content: space-between;
+}
+button{
+    flex: 1;
+    padding: 10px;
+    margin: 5px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;    
+    transition: 0.3s;
+    color: rgb(0, 0, 0);
+}
+.btn-mostrar-lista {
+    background-color: rgb(0, 255, 255);
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+   
+    width: 100%;
+}
+
+.btn-mostrar-lista:hover {
+    background-color: rgba(0, 255, 255, 0.8);
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid rgb(0, 0, 255);
+}
+button:hover{
+    transform: scale(1.1);
+}
+.btn-cadastrar{
+    background-color: rgb(0, 0, 255);
+}
+.btn-cadastrar:hover{
+    background-color: rgb(0, 0, 255, 0.8);
+}
+.btn-atualizar{
+    background-color: rgb(0, 255, 0);
+}
+.btn-atualizar:hover{
+    background-color: rgb(0, 255, 0, 0.8);
+}
+.btn-excluir{
+    background-color: rgb(255, 0, 0);
+}
+.btn-excluir:hover{
+    background-color: rgb(255, 0, 0, 0.8);
+}
+@media (max-width: 400px){
+    .container{
+        width: 90%;
+    }
+    .btn-group{
+        flex-direction: column;
+    }
+    button{
+        margin: 5px 0;
+    }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <!-- Define o conjunto de caracteres para suportar acentos -->
+    <meta charset="UTF-8">
+    
+    <!-- Torna o layout responsivo em dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Define o título da aba do navegador -->
+    <title>Formulário Interativo</title>
+
+    <!-- Importa o arquivo CSS para estilização -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Container principal que envolve todo o formulário -->
+    <div class="container">
+        <!-- Título do formulário -->
+        <h2>Cadastro</h2>
+
+        <!-- Formulário que contém os campos de entrada -->
+        <form id="formulario">
+            <!-- Grupo do campo Nome -->
+            <div class="form-group">
+                <label for="nome">Nome:</label> <!-- Rótulo do campo -->
+                <input type="text" id="nome"> <!-- Campo de entrada -->
+                <div class="error" id="erro-nome"></div> <!-- Área para mensagem de erro -->
+            </div>
+            
+            <!-- Grupo do campo E-mail -->
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email">
+                <div class="error" id="erro-email"></div>
+            </div>
+            
+            <!-- Grupo do campo Telefone -->
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone">
+                <div class="error" id="erro-telefone"></div>
+            </div>
+
+            <!-- Botões de ação: Cadastrar, Atualizar e Excluir -->
+            <div class="btn-group">
+                <button type="button" class="btn-cadastrar" onclick="cadastrar()">Cadastrar</button>
+                <button type="button" class="btn-atualizar" onclick="atualizar()">Atualizar</button>
+                <button type="button" class="btn-excluir" onclick="excluir()">Excluir</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Importa o JavaScript para funcionalidades -->
+    <script src="script.js"></script>
+
+</body>
+</html>

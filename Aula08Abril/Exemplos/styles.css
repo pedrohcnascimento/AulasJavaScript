@@ -1,0 +1,224 @@
+/* Importando uma fonte moderna do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* 
+    Resetando os estilos padrão do navegador para garantir um layout mais consistente 
+    em diferentes navegadores. Remove margens e preenchimentos padrão dos elementos. 
+*/
+* {
+    margin: 0;
+    /* Remove margens */
+    padding: 0;
+    /* Remove preenchimentos */
+    box-sizing: border-box;
+    /* Mantém a largura total do elemento, incluindo bordas e padding */
+    font-family: 'Roboto', sans-serif;
+    /* Define a fonte padrão para o site */
+}
+
+/* 
+    Estilizando o corpo da página para ocupar toda a altura da tela 
+    e centralizar o conteúdo no meio da tela.
+*/
+body {
+    background-color: #0A0A0A;
+    /* Define um fundo preto */
+    display: flex;
+    /* Usa flexbox para alinhar o conteúdo */
+    justify-content: center;
+    /* Centraliza os elementos horizontalmente */
+    align-items: center;
+    /* Centraliza os elementos verticalmente */
+    height: 100vh;
+    /* Garante que o body ocupe toda a altura da tela */
+}
+
+/* 
+    Container principal do formulário: 
+    Define a área onde o formulário será exibido e estiliza seu design. 
+*/
+.container {
+    background: #1E1E1E;
+    /* Define um fundo cinza escuro */
+    padding: 20px;
+    /* Adiciona um espaçamento interno */
+    border-radius: 10px;
+    /* Arredonda os cantos do container */
+    box-shadow: 3px 3px 10px rgba(0, 162, 255, 0.5);
+    /* Adiciona uma sombra azul para destacar */
+    width: 320px;
+    /* Define a largura fixa do formulário */
+    color: white;
+    /* Define a cor do texto como branco */
+}
+
+/* 
+    Estilizando o título do formulário. 
+    Deixa o título centralizado e com uma cor azul vibrante.
+*/
+h2 {
+    text-align: center;
+    /* Centraliza o título */
+    margin-bottom: 20px;
+    /* Adiciona um espaçamento abaixo do título */
+    color: #00A2FF;
+    /* Define a cor azul vibrante */
+}
+
+/* 
+    Definições de estilo para cada grupo de campos do formulário.
+    Cada campo de entrada e seu rótulo pertencem a um form-group.
+*/
+.form-group {
+    margin-bottom: 15px;
+    /* Adiciona um espaçamento entre os campos do formulário */
+}
+
+/* 
+    Estilizando os rótulos dos campos (Nome, E-mail, Telefone).
+    A ideia é dar destaque e separar bem cada campo.
+*/
+label {
+    font-weight: bold;
+    /* Define o texto do rótulo como negrito */
+    display: block;
+    /* Faz com que o rótulo ocupe toda a largura do container */
+    margin-bottom: 5px;
+    /* Adiciona um pequeno espaço abaixo do rótulo */
+    color: #00A2FF;
+    /* Define a cor azul vibrante para os textos dos rótulos */
+}
+
+/* 
+    Estilizando os campos de entrada (input).
+    Garante uma boa visibilidade e uma aparência moderna.
+*/
+input {
+    width: 100%;
+    /* Faz com que o input ocupe toda a largura do container */
+    padding: 8px;
+    /* Adiciona um espaçamento interno para tornar a digitação confortável */
+    border: 1px solid #00A2FF;
+    /* Define uma borda azul */
+    border-radius: 5px;
+    /* Arredonda os cantos do input */
+    background-color: #333;
+    /* Define um fundo escuro */
+    color: white;
+    /* Mantém o texto branco para contraste */
+}
+
+/* 
+    Estilizando mensagens de erro para feedback ao usuário. 
+    As mensagens de erro aparecerão abaixo dos campos inválidos.
+*/
+.error {
+    color: red;
+    /* Define a cor do texto como vermelho */
+    font-size: 14px;
+    /* Define um tamanho de fonte menor */
+    margin-top: 5px;
+    /* Adiciona um pequeno espaçamento acima da mensagem */
+}
+
+/* 
+    Estilizando a seção dos botões.
+    Os botões devem ficar alinhados lado a lado.
+*/
+.btn-group {
+    display: flex;
+    /* Usa flexbox para posicionar os botões lado a lado */
+    justify-content: space-between;
+    /* Distribui os botões uniformemente */
+}
+
+/* 
+    Estilizando os botões do formulário.
+    Todos compartilham estilos básicos, mas têm cores diferentes.
+*/
+button {
+    flex: 1;
+    /* Faz com que cada botão tenha o mesmo tamanho */
+    padding: 10px;
+    /* Adiciona um espaçamento interno para facilitar o clique */
+    margin: 5px;
+    /* Adiciona um espaço entre os botões */
+    border: none;
+    /* Remove a borda padrão */
+    border-radius: 5px;
+    /* Arredonda os cantos dos botões */
+    font-size: 16px;
+    /* Define um tamanho de fonte adequado */
+    cursor: pointer;
+    /* Transforma o cursor em uma mão ao passar sobre o botão */
+    transition: 0.3s;
+    /* Adiciona um efeito suave ao passar o mouse */
+}
+
+/* 
+    Definição de cores individuais para cada botão.
+    Cada um representa uma ação diferente no formulário.
+*/
+
+/* Botão Cadastrar - Azul */
+.btn-cadastrar {
+    background-color: #007BFF;
+    /* Azul vibrante */
+    color: white;
+    /* Texto branco */
+}
+
+/* Efeito ao passar o mouse sobre o botão Cadastrar */
+.btn-cadastrar:hover {
+    background-color: #0056b3;
+    /* Azul mais escuro */
+}
+
+/* Botão Atualizar - Azul mais claro */
+.btn-atualizar {
+    background-color: #17A2B8;
+    /* Azul esverdeado */
+    color: white;
+    /* Texto branco */
+}
+
+/* Efeito ao passar o mouse sobre o botão Atualizar */
+.btn-atualizar:hover {
+    background-color: #117a8b;
+    /* Azul mais escuro */
+}
+
+/* Botão Excluir - Vermelho */
+.btn-excluir {
+    background-color: #DC3545;
+    /* Vermelho vibrante */
+    color: white;
+    /* Texto branco */
+}
+
+/* Efeito ao passar o mouse sobre o botão Excluir */
+.btn-excluir:hover {
+    background-color: #C82333;
+    /* Vermelho mais escuro */
+}
+
+/* 
+    Ajuste para telas menores.
+    Garante que o formulário se adapte a celulares e tablets.
+*/
+@media (max-width: 400px) {
+    .container {
+        width: 90%;
+        /* Faz o formulário ocupar quase toda a largura da tela */
+    }
+
+    .btn-group {
+        flex-direction: column;
+        /* Empilha os botões verticalmente */
+    }
+
+    button {
+        margin: 5px 0;
+        /* Ajusta o espaçamento para não ficarem colados */
+    }
+}
