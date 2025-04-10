@@ -26,22 +26,25 @@ function alternarFormulario(formulario) {
     }
 }
 
-function cadastrar() {
+function cadastrar(event) {
+    event.preventDefault();
+
     const nomeUsuario = document.getElementById('username').value.trim();
     const email = document.getElementById('emailCadastro').value.trim();
     const senha = document.getElementById('senha').value.trim();
     const confirmacaoSenha = document.getElementById('confirmacaoSenha').value.trim();
 
-    if (nomeUsuario === '' || email === '' || senha === '' || confirmacaoSenha === '') {
+    if (!nomeUsuario || !email || !senha || !confirmacaoSenha) {
         alert('Preencha todos os campos!');
         return;
-    }else if (!email.includes("@")) {
+    }
+    if (!email.includes("@")) {
         alert("Informe um e-mail válido!");
-        return
+        return;
     }
     if (senha.length < 6) {
         alert("A senha deve ter pelo menos 6 caracteres!");
-        return
+        return;
     }
     if (senha !== confirmacaoSenha) {
         alert('As senhas não coincidem!');
@@ -59,14 +62,28 @@ function cadastrar() {
             senha: senha
         })
     })
-        .then(response => response.json())
-        .then(data => alert('Usuário cadastrado com sucesso!'))
-        .catch(error => console.error('Erro:', error));
-
-    //cadastroContainer.reset();
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(err => {
+                throw new Error(err.error || 'Erro ao cadastrar usuário');
+            });
+        }
+        return response.json();
+    })
+    .then(data => {
+        alert(data.message || 'Usuário cadastrado com sucesso!');
+        console.log('Resposta do servidor:', data);
+        cadastroContainer.reset();
+    })
+    .catch(error => {
+        alert(`Erro: ${error.message}`);
+        console.error('Erro ao cadastrar:', error);
+    });
 }
 
-function login() {
+function login(event) {
+    event.preventDefault();
+
     let usernameEmail = document.getElementById('username/email').value.trim();
     let senha = document.getElementById('password').value.trim();
 
@@ -94,11 +111,12 @@ function login() {
         .then((data) => {
             alert(data.message);
             console.log('Usuário logado:', data.user);
+            window.open('https://www.youtube.com/watch?v=lx0eir2xF5E&pp=ygUYZXUgb2RlaW8gZnJvbnRlbmQgbXVzaWNh', '_blank'); 
         })
         .catch((error) => {
             alert(error.message);
             console.error('Erro:', error);
         });
 
-    //loginContainer.reset();
+    loginContainer.reset();
 }

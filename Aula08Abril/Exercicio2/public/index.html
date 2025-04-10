@@ -11,20 +11,20 @@
     <button id="botaoLogin" onclick="alternarFormulario('login')">Ir para Login</button>
     <button id="botaoCadastro" onclick="alternarFormulario('cadastro')">Ir para Cadastro</button>
 
-    <form class="container1 hidden" id="loginContainer">
+    <form class="container1 hidden" id="loginContainer" onsubmit="login(event)">
         <h2>Login</h2>
         <input type="text" id="username/email" placeholder="Nome de usuario/email">
         <input type="password" id="password" placeholder="Senha">
-        <button onclick="login()">Entrar</button>
+        <button type="submit">Entrar</button>
     </form>
 
-    <form class="container2 hidden" id="cadastroContainer">
+    <form class="container2 hidden" id="cadastroContainer" onsubmit="cadastrar(event)">
         <h2>Cadastrar</h2>
         <input type="text" id="username" placeholder="Nome de usuário">
         <input type="email" id="emailCadastro" placeholder="Email">
         <input type="password" id="senha" placeholder="Senha">
         <input type="password" id="confirmacaoSenha" placeholder="Confirmar Senha">
-        <button onclick="cadastrar()">Cadastrar</button>
+        <button type="submit">Cadastrar</button>
     </form>
 
     <script src="Scripts/script.js"></script>
