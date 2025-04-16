@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria da pedreira</title>
+    <link rel="stylesheet" href="Estilos/style.css">
+</head>
+<body id="bodyCadastro">
+    <header>
+        <div class="logo">Pizzaria da Pedreira</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#sobre">Sobre nós</a></li>
+                <li><a id="botaoProdutos">Produtos</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button id="botaoLogin">Log In</button>
+        </div>
+    </header>
+    <form class="container2" id="cadastroContainer" onsubmit="cadastrar(event)">
+        <h2>Cadastrar</h2>
+        <input type="text" id="username" placeholder="Nome de usuário">
+        <input type="email" id="emailCadastro" placeholder="Email">
+        <input type="password" id="senha" placeholder="Senha">
+        <input type="password" id="confirmacaoSenha" placeholder="Confirmar Senha">
+        <button type="submit">Cadastrar</button>
+    </form>
+    <script src="Scripts/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria da Pedreira</title>
+    <link rel="stylesheet" href="Estilos/style.css">
+</head>
+<body id="bodyProdutos">
+    <header>
+        <div class="logo">Pizzaria da Pedreira</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#sobre">Sobre nós</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button id="botaoLogin">Log In</button>
+            <button id="botaoCadastro">Cadastrar</button>
+        </div>
+    </header>
+    <div class="containerProdutos">
+        <h1>Menu de itens</h1>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <label for="category">Filtrar por categoria:</label>
+            <select id="category">
+                <option value="">Selecione uma categoria</option>
+                <option value="salgados">Salgados</option>
+                <option value="doces">Doces</option>
+                <option value="bebidas">Bebidas</option>
+                <option value="lanches">Lanches</option>
+            </select>
+
+            <label for="search">Buscar por nome:</label>
+            <input type="text" id="search" placeholder="Digite o nome do produto...">
+        </div>
+
+        <!-- Produtos -->
+        <div class="products" id="product-list">
+        </div>
+    </div>
+<script src="Scripts/script.js"></script>    
+</body>
+</html>

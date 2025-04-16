@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você fez login</title>
+    <link rel="stylesheet" href="Estilos/style.css">
+</head>
+<body id="bodyLogin">
+    <header>
+        <div class="logo">Pizzaria da Pedreira</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre nós</a></li>
+                <li><a id="botaoProdutos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button id="botaoCadastro">Cadastrar</button>
+        </div>
+    </header>
+    <div id="div-funcoes-adm">
+        <h2>Botões secretos para admins</h2>
+        <!-- Botão para mostrar a lista -->
+        <button type="button" class="btn-mostrar-lista" onclick="mostrarLista()">Listar Usuários</button>
+
+        <!-- Tabela para exibir os dados -->
+        <div id="tabela-container" style="display: none; margin-top: 20px;">
+            <table id="tabela-usuarios" border="1" style="width: 100%; text-align: left; color: white;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Senha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- As linhas da tabela serão preenchidas dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+        <form id="formulario">
+            <!-- Grupo do campo Nome -->
+            <div class="form-group">
+                <label for="nome">Nome:</label> <!-- Rótulo do campo -->
+                <input type="text" id="nome"> <!-- Campo de entrada -->
+                <div class="error" id="erro-nome"></div> <!-- Área para mensagem de erro -->
+            </div>
+            <button type="button" class="btn-excluir" onclick="excluir()">Excluir</button>
+        </form>
+    </div>
+    <script src="Scripts/script.js"></script>
+</body>
+</html>
