@@ -1,0 +1,392 @@
+:root {
+    --main-bg: #111;
+    --form-bg: #000;
+    --input-bg: #222;
+    --accent: #e53935;
+    --accent-hover: #b71c1c;
+    --radius: 0.75rem;
+    --padding: 2rem;
+    --gap: 1rem;
+    --font-size: 1rem;
+    --max-width: 26.25rem;
+    --font-family: 'montserrat', sans-serif;
+    /* 420px */
+}
+
+body {
+    background: var(--main-bg);
+    color: #fff;
+    font-family: var(--font-family);
+    margin: 0;
+    min-height: 100vh;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.left-panel {
+    display: none;
+}
+
+.justificativa-form {
+    background: var(--form-bg);
+    padding: var(--padding) var(--padding) 1.5rem var(--padding);
+    border-radius: var(--radius);
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    box-shadow: 0 0.125rem 1.5rem rgba(0, 0, 0, 0.3);
+    font-family: var(--font-family);
+}
+
+.upload-box {
+    border: 0.125rem dashed #444;
+    background: var(--form-bg);
+    padding: 2.5rem 1rem;
+    text-align: center;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: border-color 0.3s, background 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-family);
+}
+
+.upload-box:hover {
+    border-color: var(--accent);
+    background: #111;
+}
+
+.upload-box input[type="file"] {
+    display: none;
+}
+
+.upload-box .icon {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.upload-box p {
+    color: #fff;
+    margin: 0.25rem 0;
+}
+
+.upload-box .browse {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.625rem 1.25rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 0.375rem;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.upload-box .browse:hover {
+    background: var(--accent-hover);
+}
+
+.justificativa-form h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    text-align: left;
+}
+
+.justificativa-form label {
+    font-size: var(--font-size);
+    margin-bottom: 0.25rem;
+}
+
+.justificativa-form input,
+.justificativa-form select,
+.justificativa-form textarea {
+    background: var(--input-bg);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-size: var(--font-size);
+    margin-bottom: 0.5rem;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+.justificativa-form input::placeholder,
+.justificativa-form textarea::placeholder,
+input[type="date"].date-white::placeholder {
+    color: #fff !important;
+    opacity: 1;
+}
+
+.justificativa-form textarea {
+    resize: none;
+    min-height: 2.5rem;
+    max-height: 7.5rem;
+    overflow-y: hidden;
+    padding: 0.75rem;
+    font-size: var(--font-size);
+    background: var(--input-bg);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    margin-bottom: 0.5rem;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+}
+
+.btn-enviar {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.9rem 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    transition: background 0.2s;
+}
+
+.btn-enviar:hover {
+    background: var(--accent-hover);
+}
+
+footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+#filePreview {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.file-preview-bar {
+    display: flex;
+    align-items: center;
+    background: var(--input-bg);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+    gap: 0.75rem;
+    color: #fff;
+    font-size: var(--font-size);
+}
+
+.file-preview-bar i {
+    font-size: 1.3rem;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.custom-select-wrapper select {
+    width: 100%;
+    padding-right: 2.5rem;
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--input-bg);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-size: var(--font-size);
+    margin-bottom: 0.5rem;
+    outline: none;
+}
+
+.select-caret {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #fff;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+input[type="date"].date-white {
+    color-scheme: dark;
+    color: #fff;
+    background: var(--input-bg);
+    border: none;
+    border-radius: var(--radius);
+    padding: 0.75rem;
+    font-size: var(--font-size);
+    margin-bottom: 0.5rem;
+    padding-right: 2.5rem;
+}
+
+.date-icon-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.date-icon-wrapper .calendar-icon {
+    position: absolute;
+    right: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1.5rem;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+}
+
+.date-icon-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+@media (min-width: 900px) {
+
+    body,
+    html {
+        height: 100%;
+        min-height: 100vh;
+        max-width: 100vw;
+        font-family: var(--font-family);
+    }
+
+    .container {
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: stretch;
+        min-height: 100vh;
+        height: 100vh;
+        padding: 0;
+        gap: 0;
+        max-width: 100vw;
+    }
+
+    .left-panel {
+        width: 60%;
+        background: #222;
+        border-radius: var(--radius) 0 0 var(--radius);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        min-height: 100%;
+        min-width: 0;
+    }
+
+    .justificativa-form {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        border-radius: 0 var(--radius) var(--radius) 0;
+        margin: 0;
+        box-shadow: none;
+        height: 100%;
+        justify-content: center;
+    }
+
+    .justificativa-form textarea {
+        height: 48px !important;
+        min-height: 48px !important;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 2rem;
+        left: 18%;
+        transform: translateX(-50%);
+        width: 100%;
+        max-width: 26.25rem;
+    }
+
+    .btn-voltar {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: left;
+        gap: 0.5rem;
+        cursor: pointer;
+        margin-bottom: 2rem;
+        font-family: var(--font-family);
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+    .btn-voltar:hover {
+        color: var(--accent);
+    }
+
+    .painel-bemvindo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        flex: 1;
+    }
+
+    .bemvindo-titulo {
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 2.5rem;
+        margin-top: 0;
+        letter-spacing: 0.01em;
+    }
+
+    .foto-usuario {
+        margin: 100px;
+        width: 170px;
+        height: 170px;
+        background: #e0e0e0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        color: #222;
+        margin-bottom: 1.5rem;
+        overflow: hidden;
+    }
+
+    .foto-usuario img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .nome-usuario {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+}
